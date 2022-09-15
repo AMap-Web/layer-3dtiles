@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试</title>
+    <script src = 'https://webapi.amap.com/maps?v=2.0&key=747f980f217a31ba68d99301045a3fa7&plugin=AMap.3DTilesLayer'></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.142/build/three.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.142/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@amap/three-layer/dist/index.js"></script>
+    <script src="/index.js" ></script>
+  </head>
+  <body>
+    <div id="app" style="height: 600px;"></div>
+    <script type="text/javascript">
+      const map = new AMap.Map('app', {
+        center: [121.502325,31.238165],
+        zoom: 14,
+        viewMode: '3D',
+        pitch: 35
+      })
+      const layer = new AMap.ThreeLayer(map, {
+        customCoordsCenter: [0,0]
+      })
+      layer.on('complete', () => {
+        const light = new THREE.AmbientLight('#ffffff', 1);
+        layer.add(light);
+        const tiles = new AMap.Layer3DTiles(layer, {
+          // url: './data/tileset.json',
+          url: 'https://a.amap.com/jsapi_demos/static/data3d/single.json',
+          position: [121.502325,31.238165]
+        })
+        tiles.setRotation({
+          x:90,
+          y:0,
+          z:0
+        })
+        console.log('layer: ', layer)
+        console.log('tiles: ', tiles)
+      })
+
+    </script>
+  </body>
+</html>
