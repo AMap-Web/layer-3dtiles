@@ -13,29 +13,28 @@ export class LayerTilesRenderer extends TilesRenderer {
     if ( tile.transform ) {
 
       if(!parentTile){
-        transform.elements[0] = 1
-        transform.elements[1] = 0
-        transform.elements[2] = 0
-        transform.elements[3] = 0
-        transform.elements[4] = 0
-        transform.elements[5] = 1
-        transform.elements[6] = 0
-        transform.elements[7] = 0
-        transform.elements[8] = 0
-        transform.elements[9] = 0
-        transform.elements[10] = 1
-        transform.elements[11] = 0
-        transform.elements[ 12 ] = 0
-        transform.elements[ 13 ] = 0
-        transform.elements[ 14 ] = 0
-        transform.elements[ 15 ] = 1.0
-      }else{
-        const transformArr = tile.transform;
-        for ( let i = 0; i < 16; i ++ ) {
+        tile.transform[0] = 1
+        tile.transform[1] = 0
+        tile.transform[2] = 0
+        tile.transform[3] = 0
+        tile.transform[4] = 0
+        tile.transform[5] = 1
+        tile.transform[6] = 0
+        tile.transform[7] = 0
+        tile.transform[8] = 0
+        tile.transform[9] = 0
+        tile.transform[10] = 1
+        tile.transform[11] = 0
+        tile.transform[ 12 ] = 0
+        tile.transform[ 13 ] = 0
+        tile.transform[ 14 ] = 0
+        tile.transform[ 15 ] = 1.0
+      }
+      const transformArr = tile.transform;
+      for ( let i = 0; i < 16; i ++ ) {
 
-          transform.elements[ i ] = transformArr[ i ];
+        transform.elements[ i ] = transformArr[ i ];
 
-        }
       }
     }
 
@@ -44,7 +43,6 @@ export class LayerTilesRenderer extends TilesRenderer {
       transform.premultiply( parentTile.cached.transform );
 
     }
-
     const transformInverse = new Matrix4().copy( transform ).invert();
 
     let box = null;
