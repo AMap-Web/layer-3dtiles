@@ -20,9 +20,10 @@
     <div id="app"></div>
     <script type="text/javascript">
       const map = new AMap.Map('app', {
-        center: [121.502325,31.238165],
+        center: [118.822123, 32.037405],
         zoom: 14,
         viewMode: '3D',
+        showBuildingBlock: false,
         pitch: 35
       })
       const layer = new AMap.ThreeLayer(map)
@@ -32,7 +33,7 @@
         const tiles = new AMap.Layer3DTiles(layer, {
           // url: './data/tileset.json',
           url: './tiles/tileset.json',
-          position: [121.502325,31.238165]
+          position: [118.822123, 32.037405]
         })
         tiles.setRotation({
           x:0,

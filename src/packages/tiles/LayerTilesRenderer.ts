@@ -12,17 +12,30 @@ export class LayerTilesRenderer extends TilesRenderer {
     const transform = new Matrix4();
     if ( tile.transform ) {
 
-      const transformArr = tile.transform;
-      for ( let i = 0; i < 16; i ++ ) {
-
-        transform.elements[ i ] = transformArr[ i ];
-
-      }
       if(!parentTile){
+        transform.elements[0] = 1
+        transform.elements[1] = 0
+        transform.elements[2] = 0
+        transform.elements[3] = 0
+        transform.elements[4] = 0
+        transform.elements[5] = 1
+        transform.elements[6] = 0
+        transform.elements[7] = 0
+        transform.elements[8] = 0
+        transform.elements[9] = 0
+        transform.elements[10] = 1
+        transform.elements[11] = 0
         transform.elements[ 12 ] = 0
         transform.elements[ 13 ] = 0
         transform.elements[ 14 ] = 0
         transform.elements[ 15 ] = 1.0
+      }else{
+        const transformArr = tile.transform;
+        for ( let i = 0; i < 16; i ++ ) {
+
+          transform.elements[ i ] = transformArr[ i ];
+
+        }
       }
     }
 
