@@ -1,4 +1,4 @@
-import { TilesRenderer } from '3d-tiles-renderer'
+import { LayerTilesRenderer } from './LayerTilesRenderer'
 import BaseEvent from '../event'
 
 interface Vec {
@@ -15,13 +15,13 @@ interface Options {
 class Layer3DTiles extends BaseEvent{
   layer: any // threejs的图层对象
   animationFrame = -1; //gltf动画
-  tilesRenderer: TilesRenderer
+  tilesRenderer: LayerTilesRenderer
   group: any
 
   constructor(layer: any, options: Options) {
     super();
     this.layer = layer;
-    const tilesRenderer = new TilesRenderer( options.url );
+    const tilesRenderer = new LayerTilesRenderer( options.url );
     tilesRenderer.setCamera( this.layer.getCamera() );
     tilesRenderer.setResolutionFromRenderer( this.layer.getCamera(), this.layer.getRender() );
     this.group = tilesRenderer.group
@@ -71,6 +71,10 @@ class Layer3DTiles extends BaseEvent{
       this.refresh();
       this.animate();
     });
+  }
+
+  getGroup(){
+    return this.group
   }
 
   destroy() {

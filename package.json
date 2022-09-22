@@ -5,7 +5,8 @@
   "keywords": [
     "amap",
     "threejs",
-    "3dtiles"
+    "3dtiles",
+    "高德地图"
   ],
   "exports": {
     ".": {
@@ -28,8 +29,8 @@
     "node": ">= 16"
   },
   "scripts": {
-    "build": "npm run clean:dist && cross-env NODE_ENV=production rollup -c rollup.config.js",
-    "dev": "npm run clean:dist && cross-env NODE_ENV=development rollup -c rollup.config.js -w",
+    "build": "npm run clean:dist && cross-env NODE_ENV=production rollup -c rollup.config.js && cross-env NODE_ENV=production rollup -c rollup.umd.config.js",
+    "dev": "npm run clean:dist && cross-env NODE_ENV=development rollup -c rollup.umd.config.js -w",
     "clean:dist": "rimraf dist",
     "lint": "eslint --fix --ext .js,.vue src/",
     "prettier": "prettier --write src/"
