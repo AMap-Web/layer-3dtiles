@@ -19,8 +19,9 @@
   <body>
     <div id="app"></div>
     <script type="text/javascript">
+      const center = [121.502325,31.238165]
       const map = new AMap.Map('app', {
-        center: [118.822123, 32.037405],
+        center: center,
         zoom: 14,
         viewMode: '3D',
         showBuildingBlock: false,
@@ -31,9 +32,9 @@
         const light = new THREE.AmbientLight('#ffffff', 1);
         layer.add(light);
         const tiles = new AMap.Layer3DTiles(layer, {
-          // url: './data/tileset.json',
+          // url: 'https://a.amap.com/jsapi_demos/static/data3d/single.json',
           url: './tiles/tileset.json',
-          position: [118.822123, 32.037405]
+          position: center
         })
         tiles.setRotation({
           x:0,
