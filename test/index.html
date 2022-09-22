@@ -19,7 +19,8 @@
   <body>
     <div id="app"></div>
     <script type="text/javascript">
-      const center = [121.502325,31.238165]
+      // const center = [116.1525,39.906]
+      const center = [116.405242513021,39.909402940539]
       const map = new AMap.Map('app', {
         center: center,
         zoom: 14,
@@ -33,7 +34,7 @@
         layer.add(light);
         const tiles = new AMap.Layer3DTiles(layer, {
           // url: 'https://a.amap.com/jsapi_demos/static/data3d/single.json',
-          url: './tiles/tileset.json',
+          url: './hutong/tileset.json',
           position: center
         })
         tiles.setRotation({
