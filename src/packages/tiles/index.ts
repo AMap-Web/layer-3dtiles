@@ -1,5 +1,5 @@
-import { LayerTilesRenderer } from './LayerTilesRenderer'
 import BaseEvent from '../event'
+import { LayerTilesRenderer } from './LayerTilesRenderer'
 
 interface Vec {
   x: number
@@ -15,7 +15,7 @@ interface Options {
 class Layer3DTiles extends BaseEvent{
   layer: any // threejs的图层对象
   animationFrame = -1; //gltf动画
-  tilesRenderer: LayerTilesRenderer
+  tilesRenderer?: LayerTilesRenderer
   group: any
 
   constructor(layer: any, options: Options) {
@@ -50,25 +50,48 @@ class Layer3DTiles extends BaseEvent{
     }
   }
 
+  setTranslate(translate: Vec){
+    if(translate){
+      this.group.translateX(translate.x)
+      this.group.translateY(translate.y)
+      this.group.translateZ(translate.z)
+      this.refresh()
+    }
+  }
+
+  setScale(scale: number | Vec) {
+    let scaleVec: Vec;
+    if (typeof scale === 'number') {
+      scaleVec = {
+        x: scale,
+        y: scale,
+        z: scale
+      };
+    } else {
+      scaleVec = scale;
+    }
+    this.group.scale.set(scaleVec.x, scaleVec.y, scaleVec.z);
+    this.refresh();
+  }
+
   refresh() {
     this.layer.update();
   }
 
   show() {
-    // this.object.visible = true;
+    this.group.visible = true;
     this.refresh();
   }
 
   hide() {
-    // this.object.visible = false;
+    this.group.visible = false;
     this.refresh();
   }
 
   animate() {
     this.animationFrame = requestAnimationFrame(() => {
       this.layer.getCamera().updateMatrixWorld();
-      this.tilesRenderer.update();
-      this.refresh();
+      this.tilesRenderer?.update();
       this.animate();
     });
   }
@@ -77,9 +100,17 @@ class Layer3DTiles extends BaseEvent{
     return this.group
   }
 
+  getTilesRenderer(){
+    return this.tilesRenderer
+  }
+
   destroy() {
     cancelAnimationFrame(this.animationFrame)
-    this.tilesRenderer.dispose()
+    this.layer.remove(this.group)
+    this.tilesRenderer?.dispose()
+    this.group = null
+    this.tilesRenderer = undefined
+    this.layer = null
     /*if (this.object) {
       clearGroup(this.object);
       this.object = null;
