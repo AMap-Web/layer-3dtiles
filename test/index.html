@@ -8,6 +8,12 @@
       html,body,#app{
           height: 100%;
       }
+      .button-container{
+          position: absolute;
+          left: 20px;
+          top: 20px;
+          z-index: 10;
+      }
 
     </style>
     <script src = 'https://webapi.amap.com/maps?v=2.0&key=747f980f217a31ba68d99301045a3fa7&plugin=AMap.3DTilesLayer'></script>
@@ -18,6 +24,10 @@
   </head>
   <body>
     <div id="app"></div>
+    <div class="button-container">
+      <button onclick="show()">显示</button>
+      <button onclick="hide()">隐藏</button>
+    </div>
     <script type="text/javascript">
       // const center = [116.1525,39.906]
       const center = [116.405242513021,39.909402940539]
@@ -29,10 +39,11 @@
         pitch: 35
       })
       const layer = new AMap.ThreeLayer(map)
+      let tiles = null
       layer.on('complete', () => {
         const light = new THREE.AmbientLight('#ffffff', 1);
         layer.add(light);
-        const tiles = new AMap.Layer3DTiles(layer, {
+        tiles = new AMap.Layer3DTiles(layer, {
           // url: 'https://a.amap.com/jsapi_demos/static/data3d/single.json',
           url: './hutong/tileset.json',
           position: center
@@ -46,6 +57,12 @@
         console.log('layer: ', layer)
         console.log('tiles: ', tiles)
       })
+      function show(){
+        tiles.show()
+      }
+      function hide(){
+        tiles.hide()
+      }
 
     </script>
   </body>
