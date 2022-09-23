@@ -31,7 +31,7 @@
     </div>
     <script type="text/javascript">
       // const center = [116.1525,39.906]
-      const center = [116.405242513021,39.909402940539]
+      const center = [113.067878363716,22.644367393664]
       const map = new AMap.Map('app', {
         center: center,
         zoom: 14,
@@ -39,6 +39,7 @@
         showBuildingBlock: false,
         pitch: 35
       })
+      map.add(new AMap.TileLayer.Satellite())
       const layer = new AMap.ThreeLayer(map)
       let tiles = null
       layer.on('complete', () => {
@@ -55,6 +56,7 @@
           y:0,
           z:0
         })
+        tiles.setScale(1.5)
         // tiles.setTranslate({x:15,y:15,z:0})
         console.log('layer: ', layer)
         console.log('tiles: ', tiles)
