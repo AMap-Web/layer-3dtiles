@@ -48,11 +48,10 @@
   },
   "homepage": "https://github.com/AMap-Web/layer-3dtiles",
   "dependencies": {
-    "3d-tiles-renderer": "^0.3.12"
+    "3d-tiles-renderer": "^0.3.12",
+    "three": "0.143.0"
   },
   "devDependencies": {
-    "three": "0.143.0",
-    "@amap/three-layer": "^0.0.2",
     "@pnpm/logger": "4.0.0",
     "@pnpm/types": "8.5.0",
     "@rollup/plugin-commonjs": "^22.0.2",
@@ -61,6 +60,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "5.35.1",
     "@typescript-eslint/parser": "5.35.1",
+    "@types/three": "0.143.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.15.5",
     "eslint": "8.22.0",

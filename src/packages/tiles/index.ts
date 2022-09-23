@@ -1,3 +1,5 @@
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
 import BaseEvent from '../event'
 import { LayerTilesRenderer } from './LayerTilesRenderer'
 
@@ -9,7 +11,9 @@ interface Vec {
 
 interface Options {
   url: string //模型下载地址
-  position: number[]
+  position: number[],
+  dracoDecoderPath?: string // DRACOLoader 的decoder路径，默认使用CDN路径
+  fetchOptions?: any // 使用fetch下载文件的参数
 }
 
 class Layer3DTiles extends BaseEvent{
@@ -24,6 +28,24 @@ class Layer3DTiles extends BaseEvent{
     const tilesRenderer = new LayerTilesRenderer( options.url );
     tilesRenderer.setCamera( this.layer.getCamera() );
     tilesRenderer.setResolutionFromRenderer( this.layer.getCamera(), this.layer.getRender() );
+    const fetchOptions = options.fetchOptions || {}
+    const gltfLoader = new GLTFLoader(tilesRenderer.manager)
+    if ( fetchOptions.credentials === 'include' && fetchOptions.mode === 'cors' ) {
+      gltfLoader.setCrossOrigin( 'use-credentials' );
+    }
+
+    if ( 'credentials' in fetchOptions ) {
+      gltfLoader.setWithCredentials( fetchOptions.credentials === 'include' );
+    }
+
+    if ( fetchOptions.headers ) {
+      gltfLoader.setRequestHeader( fetchOptions.headers );
+    }
+    const dRACOLoader = new DRACOLoader()
+    const dracoDecodePath = options.dracoDecoderPath || 'https://cdn.jsdelivr.net/npm/three@0.142/examples/js/libs/draco/'
+    dRACOLoader.setDecoderPath(dracoDecodePath)
+    gltfLoader.setDRACOLoader(dRACOLoader)
+    tilesRenderer.manager.addHandler(/\.gltf$/i, gltfLoader)
     this.group = tilesRenderer.group
     this.layer.add( this.group );
     this.tilesRenderer = tilesRenderer
@@ -90,10 +112,14 @@ class Layer3DTiles extends BaseEvent{
 
   animate() {
     this.animationFrame = requestAnimationFrame(() => {
-      this.layer.getCamera().updateMatrixWorld();
-      this.tilesRenderer?.update();
+      this.update();
       this.animate();
     });
+  }
+
+  update(){
+    this.layer.getCamera().updateMatrixWorld();
+    this.tilesRenderer?.update();
   }
 
   getGroup(){

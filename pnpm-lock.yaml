@@ -5,13 +5,13 @@ importers:
   .:
     specifiers:
       3d-tiles-renderer: ^0.3.12
-      '@amap/three-layer': ^0.0.2
       '@pnpm/logger': 4.0.0
       '@pnpm/types': 8.5.0
       '@rollup/plugin-commonjs': ^22.0.2
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-replace': 4.0.0
       '@rollup/plugin-typescript': ^8.3.0
+      '@types/three': 0.143.0
       '@typescript-eslint/eslint-plugin': 5.35.1
       '@typescript-eslint/parser': 5.35.1
       cross-env: ^7.0.3
@@ -37,14 +37,15 @@ importers:
       typescript: ^4.7.4
     dependencies:
       3d-tiles-renderer: 0.3.12_three@0.143.0
+      three: 0.143.0
     devDependencies:
-      '@amap/three-layer': 0.0.2
       '@pnpm/logger': 4.0.0
       '@pnpm/types': 8.5.0
       '@rollup/plugin-commonjs': 22.0.2_rollup@2.78.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
       '@rollup/plugin-replace': 4.0.0_rollup@2.78.1
       '@rollup/plugin-typescript': 8.3.4_accrhai6qopda76wnqb3pkewpq
+      '@types/three': 0.143.0
       '@typescript-eslint/eslint-plugin': 5.35.1_ktjxjibzrfqejavile4bhmzhjq
       '@typescript-eslint/parser': 5.35.1_4rv7y5c6xz3vfxwhbrcxxi73bq
       cross-env: 7.0.3
@@ -66,7 +67,6 @@ importers:
       rollup-plugin-filesize: 9.1.2
       rollup-plugin-livereload: 2.0.5
       rollup-plugin-serve: 2.0.1
-      three: 0.143.0
       typescript: 4.7.4
 
 packages:
@@ -78,18 +78,6 @@ packages:
     dependencies:
       three: 0.143.0
     dev: false
-
-  /@amap/amap-jsapi-types/0.0.8:
-    resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
-    dev: true
-
-  /@amap/three-layer/0.0.2:
-    resolution: {integrity: sha512-Y67uSMXKmxdxCCfEDxCmeASRmIHcZNEcTRdYnsTBlC4kfW+0U5mOzyGWXO2+9DfJMkMTOKGeaHtmvjyBmQDL1w==}
-    engines: {node: '>= 16'}
-    dependencies:
-      '@amap/amap-jsapi-types': 0.0.8
-      three: 0.143.0
-    dev: true
 
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
@@ -383,6 +371,16 @@ packages:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 18.7.13
+    dev: true
+
+  /@types/three/0.143.0:
+    resolution: {integrity: sha512-c5PonXOt8xk5q4ygmyjOX4Ec+FA7gwfdcMT/PveE9xrJs/0DDcf2lJkWrhEcmvx2ZefQCQBcogABnGqB0P4OsA==}
+    dependencies:
+      '@types/webxr': 0.5.0
+    dev: true
+
+  /@types/webxr/0.5.0:
+    resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.35.1_ktjxjibzrfqejavile4bhmzhjq:
@@ -4974,6 +4972,7 @@ packages:
 
   /three/0.143.0:
     resolution: {integrity: sha512-oKcAGYHhJ46TGEuHjodo2n6TY2R6lbvrkp+feKZxqsUL/WkH7GKKaeu6RHeyb2Xjfk2dPLRKLsOP0KM2VgT8Zg==}
+    dev: false
 
   /through/2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
