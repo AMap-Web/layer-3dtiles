@@ -17,8 +17,9 @@
 
     </style>
     <script src = 'https://webapi.amap.com/maps?v=2.0&key=747f980f217a31ba68d99301045a3fa7&plugin=AMap.3DTilesLayer'></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.142/build/three.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.142/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.143/build/three.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@amap/three-layer/dist/index.js"></script>
     <script src="/index.js" ></script>
   </head>
@@ -44,8 +45,9 @@
         const light = new THREE.AmbientLight('#ffffff', 1);
         layer.add(light);
         tiles = new AMap.Layer3DTiles(layer, {
-          // url: 'https://a.amap.com/jsapi_demos/static/data3d/single.json',
-          url: './hutong/tileset.json',
+          // url: './hutong/tileset.json', // shp生成的3dtiles
+          // url: './tiles/tileset.json', // 倾斜摄影生成的3dtiles
+          url: 'http://localhost/bl/tileset.json', // 倾斜摄影生成的3dtiles
           position: center
         })
         tiles.setRotation({
@@ -53,7 +55,7 @@
           y:0,
           z:0
         })
-        tiles.setTranslate({x:15,y:15,z:0})
+        // tiles.setTranslate({x:15,y:15,z:0})
         console.log('layer: ', layer)
         console.log('tiles: ', tiles)
       })

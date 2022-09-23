@@ -46,6 +46,12 @@ class Layer3DTiles extends BaseEvent{
     dRACOLoader.setDecoderPath(dracoDecodePath)
     gltfLoader.setDRACOLoader(dRACOLoader)
     tilesRenderer.manager.addHandler(/\.gltf$/i, gltfLoader)
+    tilesRenderer.downloadQueue.maxJobs = 12;
+    tilesRenderer.parseQueue.maxJobs = 12;
+    tilesRenderer.lruCache.unloadPercent = 0.1;
+    /*tilesRenderer.lruCache.unloadPriorityCallback = function (item) {
+      tilesRenderer.lruCache.remove(item);
+    }*/
     this.group = tilesRenderer.group
     this.layer.add( this.group );
     this.tilesRenderer = tilesRenderer

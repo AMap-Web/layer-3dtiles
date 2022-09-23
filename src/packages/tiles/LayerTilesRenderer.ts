@@ -45,9 +45,9 @@ export class LayerTilesRenderer extends TilesRenderer {
     }
     const transformInverse = new Matrix4().copy( transform ).invert();
 
-    let box = null as Box3;
-    let boxTransform = null as Matrix4;
-    let boxTransformInverse = null as Matrix4;
+    let box: null | Box3 = null;
+    let boxTransform: null | Matrix4 = null;
+    let boxTransformInverse: null | Matrix4 = null;
     if ( 'box' in tile.boundingVolume ) {
 
       const data = tile.boundingVolume.box;
@@ -103,7 +103,7 @@ export class LayerTilesRenderer extends TilesRenderer {
 
     }
 
-    let sphere = null as Sphere;
+    let sphere: null | Sphere = null;
     if ( 'sphere' in tile.boundingVolume ) {
 
       const data = tile.boundingVolume.sphere;
@@ -116,7 +116,7 @@ export class LayerTilesRenderer extends TilesRenderer {
 
       const data = tile.boundingVolume.box;
       sphere = new Sphere();
-      box.getBoundingSphere( sphere );
+      box?.getBoundingSphere( sphere );
       sphere.center.set( data[ 0 ], data[ 1 ], data[ 2 ] );
       sphere.applyMatrix4( transform );
 

@@ -22,6 +22,8 @@ CDN加载需要先加载高德地图JS、threejs的库和`@amap/three-layer`，�
 <script src = 'https://webapi.amap.com/maps?v=2.0&key=YOUR_KEY'></script>
 <!--加载threejs -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.143/build/three.js"></script>
+<!--加载draco -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/DRACOLoader.js"></script>
 <!--加载threejs的GLTFLoader -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/GLTFLoader.js"></script>
 <!--加载three-layer插件 -->
@@ -42,6 +44,7 @@ npm install @amap/layer-3dtiles @amap/three-layer
 ```js
 <script src = 'https://webapi.amap.com/maps?v=2.0&key=YOUR_KEY'></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.143/build/three.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/DRACOLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.143/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@amap/three-layer/dist/index.js"></script>
 <!--加载layer-3dtiles插件 -->
@@ -116,6 +119,8 @@ options: Layer3DTiles初始化参数，参数内容如下：
 | ---- |----------------------------------|-----------------------------------|
 | url | String                           | 模型加载地址                            |
 | position | [number,number] | 3dtiles加载的经纬度位置 |
+| dracoDecoderPath | String | DRACOLoader 的decoder路径，默认使用CDN路径 | 
+| fetchOptions | Object | 使用fetch下载文件的参数 |
 
 ###### 成员函数
 
