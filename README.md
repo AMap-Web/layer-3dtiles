@@ -57,7 +57,7 @@ npm install @amap/layer-3dtiles @amap/three-layer
   layer.on('complete', () => {
       const light = new THREE.AmbientLight('#ffffff', 1);
       layer.add(light);
-      const tiles = new AMap.Three3DTiles(layer, {
+      const tiles = new AMap.Layer3DTiles(layer, {
         url: './hutong/tileset.json',
         position: [116.405242513021,39.909402940539]
       })
@@ -77,7 +77,7 @@ npm install @amap/layer-3dtiles @amap/three-layer
 ```js
 import {AmbientLight} from 'three'
 import {ThreeLayer} from '@amap/three-layer'
-import {Three3DTiles} from '@amap/layer-3dtiles'
+import {Layer3DTiles} from '@amap/layer-3dtiles'
 const map = new AMap.Map('app', {
   center: [120,31],
   zoom: 14,
@@ -88,7 +88,7 @@ const layer = new ThreeLayer(map)
 layer.on('complete', () => {
   const light = new AmbientLight('#ffffff', 1);
   layer.add(light);
-  const tiles = new Three3DTiles(layer, {
+  const tiles = new Layer3DTiles(layer, {
     url: './hutong/tileset.json',
     position: [116.405242513021,39.909402940539]
   })
