@@ -1,7 +1,7 @@
 {
   "name": "@amap/layer-3dtiles",
   "version": "0.0.1",
-  "description": "amap threejs layer plugin",
+  "description": "高德地图3DTiles加载插件",
   "keywords": [
     "amap",
     "threejs",
@@ -40,13 +40,13 @@
     "not ie 11",
     "not op_mini all"
   ],
-  "repository": "https://github.com/AMap-Web/amap-3dtiles",
+  "repository": "https://github.com/AMap-Web/layer-3dtiles",
   "author": "guyangyang <407042815@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AMap-Web/amap-3dtiles/issues"
+    "url": "https://github.com/AMap-Web/layer-3dtiles/issues"
   },
-  "homepage": "https://github.com/AMap-Web/amap-3dtiles",
+  "homepage": "https://github.com/AMap-Web/layer-3dtiles",
   "dependencies": {
     "3d-tiles-renderer": "^0.3.12"
   },
