@@ -121,23 +121,31 @@ options: Layer3DTiles初始化参数，参数内容如下：
 | position | [number,number] | 3dtiles加载的经纬度位置 |
 | dracoDecoderPath | String | DRACOLoader 的decoder路径，默认使用CDN路径 | 
 | fetchOptions | Object | 使用fetch下载文件的参数 |
+| mouseEvent | Boolean | 是否开启事件 |
+| debug | Boolean | 是否开启debug，开启后将会在页面最顶部显示当前模型处理情况 |
 
 ###### 成员函数
 
-| 函数名         | 入参                                      | 返回值             | 描述                                       |
-|-------------|-----------------------------------------|-----------------|------------------------------------------|
-| setScale    | Number，{x:Number, y: Number, z: Number} | 无               | 设置缩放比例                                   |
-| setPosition | [Number,Number] (经纬度)                   | 无               | 设置模型位置                                   |
-| setRotation | {x:Number, y: Number, z: Number}        | 无               | 旋转模型                                     |
-| setTranslate | {x:Number, y: Number, z: Number}        | 无               | 模型偏移设置                                   |
-| getGroup    | 无                                       | Group           | 获取3dtiles的Group对象                        |
-| getTilesRenderer | 无                                       | TilesRenderer   | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象 |
-| refresh     | 无                                       | 无               | 刷新图层                                     |
-| show        | 无                                       | 无               | 显示模型                                     |
-| hide        | 无                                       | 无               | 隐藏模型                                     |
-| destroy     | 无                                       | 无               | 销毁模型                                     |
+| 函数名         | 入参                                           | 返回值               | 描述                                           |
+|-------------|----------------------------------------------|-------------------|----------------------------------------------|
+| setScale    | Number，{x:Number, y: Number, z: Number}      | 无                 | 设置缩放比例                                       |
+| setPosition | [Number,Number] (经纬度)                        | 无                 | 设置模型位置                                       |
+| setRotation | {x:Number, y: Number, z: Number}             | 无                 | 旋转模型                                         |
+| setTranslate | {x:Number, y: Number, z: Number}             | 无                 | 模型偏移设置                                       |
+| getGroup    | 无                                            | Group             | 获取3dtiles的Group对象                            |
+| getTilesRenderer | 无                                            | TilesRenderer     | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象     |
+| refresh     | 无                                            | 无                 | 刷新图层                                         |
+| show        | 无                                            | 无                 | 显示模型                                         |
+| hide        | 无                                            | 无                 | 隐藏模型                                         |
+| destroy     | 无                                            | 无                 | 销毁模型                                         |
 
 ###### 事件列表
 
-| 事件名 | 参数                               | 描述                                     |
-| ---- |----------------------------------|----------------------------------------|
+| 事件名          | 参数                                         | 描述                                                           |
+|--------------|--------------------------------------------|--------------------------------------------------------------|
+| loadTileSet  | TileSet                                    | tileSet加载成功后触发                                               |
+| loadModel    | {scene, tile}                              | 加载模型后触发                                                      |
+| disposeModel | {scene, tile}                              | 销毁模型后触发                                                      |
+| click        | null, {object: Object3D,batchData: Object} | 点击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取   |
+| mousemove    | null, {object: Object3D,batchData: Object} | 鼠标移动事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取 |
+| rightClick   | null, {object: Object3D,batchData: Object} | 右击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取   |
