@@ -53,7 +53,7 @@ class Layer3DTiles extends BaseEvent{
       gltfLoader.setRequestHeader( fetchOptions.headers );
     }
     const dRACOLoader = new DRACOLoader()
-    const dracoDecodePath = options.dracoDecoderPath || 'https://cdn.jsdelivr.net/npm/three@0.142/examples/js/libs/draco/'
+    const dracoDecodePath = options.dracoDecoderPath || 'https://cdn.jsdelivr.net/npm/three@0.143/examples/js/libs/draco/'
     dRACOLoader.setDecoderPath(dracoDecodePath)
     gltfLoader.setDRACOLoader(dRACOLoader)
     tilesRenderer.manager.addHandler(/\.gltf$/i, gltfLoader)
@@ -267,6 +267,7 @@ class Layer3DTiles extends BaseEvent{
     this.layer = null
     if(this.statsContainer){
       this.statsContainer.remove()
+      this.statsContainer = undefined
     }
     /*if (this.object) {
       clearGroup(this.object);

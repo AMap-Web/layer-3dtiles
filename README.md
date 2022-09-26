@@ -109,7 +109,7 @@ layer.on('complete', () => {
 ### API文档说明
 
 #### Layer3DTiles图层说明
-3dtiles图层类，提供了3dtils加载功能<br/>
+3dtiles图层类，提供了3dtils加载和常用事件功能<br/>
 ``  new AMap.Layer3DTiles(layer: AMap.ThreeLayer, options: Layer3DTilesOptions)  ``<br/>
 ###### 参数说明
 layer: ThreeLayer实例对象<br/>
@@ -126,26 +126,26 @@ options: Layer3DTiles初始化参数，参数内容如下：
 
 ###### 成员函数
 
-| 函数名         | 入参                                           | 返回值               | 描述                                           |
-|-------------|----------------------------------------------|-------------------|----------------------------------------------|
-| setScale    | Number，{x:Number, y: Number, z: Number}      | 无                 | 设置缩放比例                                       |
-| setPosition | [Number,Number] (经纬度)                        | 无                 | 设置模型位置                                       |
-| setRotation | {x:Number, y: Number, z: Number}             | 无                 | 旋转模型                                         |
-| setTranslate | {x:Number, y: Number, z: Number}             | 无                 | 模型偏移设置                                       |
-| getGroup    | 无                                            | Group             | 获取3dtiles的Group对象                            |
-| getTilesRenderer | 无                                            | TilesRenderer     | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象     |
-| refresh     | 无                                            | 无                 | 刷新图层                                         |
-| show        | 无                                            | 无                 | 显示模型                                         |
-| hide        | 无                                            | 无                 | 隐藏模型                                         |
-| destroy     | 无                                            | 无                 | 销毁模型                                         |
+| 函数名         | 入参                                           | 返回值               | 描述                                                |
+|-------------|----------------------------------------------|-------------------|---------------------------------------------------|
+| setScale    | Number，{x:Number, y: Number, z: Number}      | 无                 | 设置缩放比例                                            |
+| setPosition | [Number,Number] (经纬度)                        | 无                 | 设置模型位置                                            |
+| setRotation | {x:Number, y: Number, z: Number}             | 无                 | 旋转模型                                              |
+| setTranslate | {x:Number, y: Number, z: Number}             | 无                 | 模型偏移设置                                            |
+| getGroup    | 无                                            | Group             | 获取3dtiles的Group对象                                 |
+| getTilesRenderer | 无                                            | TilesRenderer     | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象，[文档地址](https://github.com/NASA-AMMOS/3DTilesRendererJS) |
+| refresh     | 无                                            | 无                 | 刷新图层                                              |
+| show        | 无                                            | 无                 | 显示模型                                              |
+| hide        | 无                                            | 无                 | 隐藏模型                                              |
+| destroy     | 无                                            | 无                 | 销毁模型                                              |
 
 ###### 事件列表
 
-| 事件名          | 参数                                         | 描述                                                           |
-|--------------|--------------------------------------------|--------------------------------------------------------------|
-| loadTileSet  | TileSet                                    | tileSet加载成功后触发                                               |
-| loadModel    | {scene, tile}                              | 加载模型后触发                                                      |
-| disposeModel | {scene, tile}                              | 销毁模型后触发                                                      |
-| click        | null, {object: Object3D,batchData: Object} | 点击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取   |
-| mousemove    | null, {object: Object3D,batchData: Object} | 鼠标移动事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取 |
-| rightClick   | null, {object: Object3D,batchData: Object} | 右击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取   |
+| 事件名          | 参数                                         | 描述                                                            |
+|--------------|--------------------------------------------|---------------------------------------------------------------|
+| loadTileSet  | TileSet                                    | tileSet加载成功后触发                                                |
+| loadModel    | {scene, tile}                              | 加载模型后触发                                                       |
+| disposeModel | {scene, tile}                              | 销毁模型后触发                                                       |
+| click        | null, {object: Object3D,batchData: Object} | 点击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取    |
+| mousemove    | null, {object: Object3D,batchData: Object} | 鼠标移动事件，可能会出现null值,object为滑动到的模型，batchData为模型所在的扩展数据，通过读取父节点获取 |
+| rightClick   | null, {object: Object3D,batchData: Object} | 右击事件，可能会出现null值,object为点击的模型，batchData为模型所在的扩展数据，通过读取父节点获取    |
