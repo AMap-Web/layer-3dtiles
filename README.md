@@ -70,6 +70,9 @@ npm install @amap/layer-3dtiles @amap/three-layer
         z:0
       })
       tiles.setTranslate({x:15,y:15,z:0})
+      tiles.on('click',(e) => {
+        console.log('click: ', e)  
+      })
       console.log('layer: ', layer)
       console.log('tiles: ', tiles)
   })
@@ -101,6 +104,9 @@ layer.on('complete', () => {
     z:0
   })
   tiles.setTranslate({x:15,y:15,z:0})
+  tiles.on('click',(e) => {
+    console.log('click: ', e)
+  })
   console.log('layer: ', layer)
   console.log('tiles: ', tiles)
 })
@@ -115,29 +121,32 @@ layer.on('complete', () => {
 layer: ThreeLayer实例对象<br/>
 options: Layer3DTiles初始化参数，参数内容如下：
 
-| 属性名 | 属性类型                             | 属性描述                              |
-| ---- |----------------------------------|-----------------------------------|
-| url | String                           | 模型加载地址                            |
-| position | [number,number] | 3dtiles加载的经纬度位置 |
-| dracoDecoderPath | String | DRACOLoader 的decoder路径，默认使用CDN路径 | 
-| fetchOptions | Object | 使用fetch下载文件的参数 |
-| mouseEvent | Boolean | 是否开启事件 |
-| debug | Boolean | 是否开启debug，开启后将会在页面最顶部显示当前模型处理情况 |
+| 属性名              | 属性类型                                     | 属性描述                                                                                                  |
+|------------------|------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| url              | String                                   | 模型加载地址                                                                                                |
+| position         | [number,number]                          | 3dtiles加载的经纬度位置                                                                                       |
+| scale            | Number，{x:Number, y: Number, z: Number}  | 设置缩放比例                                                                                                |
+| rotation         | {x:Number, y: Number, z: Number}         | 旋转模型                                                                                                  |
+| translate        | {x:Number, y: Number, z: Number}         | 模型偏移设置                                                                                                |
+| dracoDecoderPath | String                                   | DRACOLoader 的decoder路径，默认使用CDN路径，默认：https://cdn.jsdelivr.net/npm/three@0.143/examples/js/libs/draco/  | 
+| fetchOptions     | Object                                   | 使用fetch下载文件的参数                                                                                        |
+| mouseEvent       | Boolean                                  | 是否开启事件,默认false                                                                                        |
+| debug            | Boolean                                  | 是否开启debug，开启后将会在页面最顶部显示当前模型处理情况， 默认 false                                                             |
 
 ###### 成员函数
 
-| 函数名         | 入参                                           | 返回值               | 描述                                                |
-|-------------|----------------------------------------------|-------------------|---------------------------------------------------|
-| setScale    | Number，{x:Number, y: Number, z: Number}      | 无                 | 设置缩放比例                                            |
-| setPosition | [Number,Number] (经纬度)                        | 无                 | 设置模型位置                                            |
-| setRotation | {x:Number, y: Number, z: Number}             | 无                 | 旋转模型                                              |
-| setTranslate | {x:Number, y: Number, z: Number}             | 无                 | 模型偏移设置                                            |
-| getGroup    | 无                                            | Group             | 获取3dtiles的Group对象                                 |
-| getTilesRenderer | 无                                            | TilesRenderer     | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象，[文档地址](https://github.com/NASA-AMMOS/3DTilesRendererJS) |
-| refresh     | 无                                            | 无                 | 刷新图层                                              |
-| show        | 无                                            | 无                 | 显示模型                                              |
-| hide        | 无                                            | 无                 | 隐藏模型                                              |
-| destroy     | 无                                            | 无                 | 销毁模型                                              |
+| 函数名              | 入参                                            | 返回值                | 描述                                                                                               |
+|------------------|-----------------------------------------------|--------------------|--------------------------------------------------------------------------------------------------|
+| setScale         | Number，{x:Number, y: Number, z: Number}       | 无                  | 设置缩放比例                                                                                           |
+| setPosition      | [Number,Number] (经纬度)                         | 无                  | 设置模型位置                                                                                           |
+| setRotation      | {x:Number, y: Number, z: Number}              | 无                  | 旋转模型                                                                                             |
+| setTranslate     | {x:Number, y: Number, z: Number}              | 无                  | 模型偏移设置                                                                                           |
+| getGroup         | 无                                             | Group              | 获取3dtiles的Group对象                                                                                |
+| getTilesRenderer | 无                                             | TilesRenderer      | 获取3dtile渲染的对象，该对象为`3d-tiles-renderer`的对象，[文档地址](https://github.com/NASA-AMMOS/3DTilesRendererJS) |
+| refresh          | 无                                             | 无                  | 刷新图层                                                                                             |
+| show             | 无                                             | 无                  | 显示模型                                                                                             |
+| hide             | 无                                             | 无                  | 隐藏模型                                                                                             |
+| destroy          | 无                                             | 无                  | 销毁模型                                                                                             |
 
 ###### 事件列表
 

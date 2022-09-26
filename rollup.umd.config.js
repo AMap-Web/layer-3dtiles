@@ -20,6 +20,7 @@ function isProd(){
 export default {
   external: [/^three/],
   input: 'src/index.ts',
+  treeshake: 'smallest',
   output: [
     {
       file: './dist/index.js',

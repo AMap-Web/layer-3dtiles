@@ -13,7 +13,10 @@ interface Vec {
 
 interface Options {
   url: string //模型下载地址
-  position: number[],
+  position: number[] // 模型位置，经纬度
+  rotation?: Vec // 旋转角度，一般不需要设置
+  translate?: Vec // 偏移位置
+  scale?: number | Vec // 模型缩放比例
   dracoDecoderPath?: string // DRACOLoader 的decoder路径，默认使用CDN路径
   fetchOptions?: any // 使用fetch下载文件的参数
   mouseEvent?: boolean // 是否开启鼠标事件，包含点击、移动、双击、右击
@@ -76,7 +79,16 @@ class Layer3DTiles extends BaseEvent{
     this.layer.add( this.group );
     this.tilesRenderer = tilesRenderer
     if(options.position){
-      this.setPosition(options.position)
+      this.setPosition(options.position);
+    }
+    if(options.rotation){
+      this.setRotation(options.rotation);
+    }
+    if(options.translate){
+      this.setTranslate(options.translate);
+    }
+    if(options.scale){
+      this.setScale(options.scale);
     }
     this.animate()
     if(options.debug){
@@ -118,6 +130,10 @@ class Layer3DTiles extends BaseEvent{
     if(this.mousemoveMapFn){
       map.off('mousemove', this.mousemoveMapFn)
       this.mousemoveMapFn = null
+    }
+    if(this.rightClickMapFn){
+      map.off('rightclick', this.rightClickMapFn)
+      this.rightClickMapFn = null
     }
   }
   clickMap(e){

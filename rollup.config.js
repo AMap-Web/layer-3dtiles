@@ -11,7 +11,7 @@ function isProd(){
 }
 
 export default {
-  external: [/^three/,/^3d-tiles-renderer/],
+  external: [/^three/,/^3d-tiles-renderer/,/^lodash-es/],
   input: 'src/index.ts',
   output: [
     {
