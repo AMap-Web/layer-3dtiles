@@ -4,7 +4,7 @@ module.exports = {
   htmlWhitespaceSensitivity: "ignore",
   tabWidth: 2, // 水平缩进的空格数
   useTabs: false,
-  semi: false, // 句末是否加分号
+  semi: true, // 句末是否加分号
   vueIndentScriptAndStyle: true,
   singleQuote: true, // 用单引号
   trailingComma: 'none', // 最后一个对象元素加逗号

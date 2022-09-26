@@ -7,6 +7,8 @@ export class LayerTilesRenderer extends TilesRenderer {
 
   preprocessNode( tile, parentTile, tileSetDir ) {
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     super.preprocessNode( tile, parentTile, tileSetDir );
 
     const transform = new Matrix4();

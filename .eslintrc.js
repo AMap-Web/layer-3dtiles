@@ -22,8 +22,7 @@ module.exports = defineConfig({
     "particlesJS": true,
     "expect": true,
     "sinon": true,
-    "Loca": true,
-    "VueAmap": true
+    "Loca": true
   },
   plugins: ['@typescript-eslint', 'import'],
   extends: [

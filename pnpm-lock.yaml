@@ -25,6 +25,7 @@ importers:
       fs-extra: 10.0.0
       gulp: 4.0.2
       lint-staged: ^12.4.0
+      lodash-es: ^4.17.21
       magic-string: ^0.25.7
       prettier: ^2.7.1
       rimraf: 3.0.2
@@ -37,6 +38,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       3d-tiles-renderer: 0.3.12_three@0.143.0
+      lodash-es: 4.17.21
       three: 0.143.0
     devDependencies:
       '@pnpm/logger': 4.0.0
@@ -3392,6 +3394,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
