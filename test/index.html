@@ -28,6 +28,7 @@
     <div class="button-container">
       <button onclick="show()">显示</button>
       <button onclick="hide()">隐藏</button>
+      <button onclick="destroy()">销毁tiles</button>
     </div>
     <script type="text/javascript">
       // const center = [116.1525,39.906]
@@ -77,6 +78,9 @@
       }
       function hide(){
         tiles.hide()
+      }
+      function destroy(){
+        tiles.destroy()
       }
 
     </script>
