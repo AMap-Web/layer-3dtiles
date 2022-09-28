@@ -153,4 +153,55 @@ export class LayerTilesRenderer extends TilesRenderer {
     };
 
   }
+
+  dispose() {
+
+    super.dispose();
+    const _this = this as any
+    _this.lruCache.itemList.forEach( tile => {
+      _this.disposeTile( tile );
+    } );
+    _this.lruCache.itemSet.clear();
+    _this.lruCache.itemList = [];
+    _this.lruCache.callbacks.clear();
+    _this.lruCache = null;
+    _this.visibleTiles.clear();
+    _this.activeTiles.clear();
+    _this.downloadQueue.callbacks.clear();
+    _this.downloadQueue.items = [];
+    _this.downloadQueue = null;
+    _this.parseQueue.callbacks.clear();
+    _this.parseQueue.items = [];
+    _this.parseQueue = null;
+    this.clearGroup( this.group );
+    _this.tileSets = {};
+    _this.cameraMap.clear();
+    _this.cameras = [];
+    _this.cameraInfo = [];
+    _this.group = null;
+
+  }
+
+  clearGroup( group ) {
+    group.traverse( ( item ) => {
+
+      if ( item.isMesh ) {
+
+        item.geometry.dispose();
+        item.material.dispose();
+        if ( item.material.texture && item.material.texture.dispose ) {
+
+          item.material.texture.dispose();
+
+        }
+
+      }
+      delete item.featureTable;
+      delete item.batchTable;
+
+    } );
+    delete group.tilesRenderer;
+    group.remove( ...group.children );
+
+  }
 }

@@ -75,6 +75,8 @@ class Layer3DTiles extends BaseEvent{
         tile
       })
     }
+    tilesRenderer.downloadQueue.maxJobs = 6
+    tilesRenderer.parseQueue.maxJobs = 6
     this.group = tilesRenderer.group
     this.layer.add( this.group );
     this.tilesRenderer = tilesRenderer
@@ -134,6 +136,11 @@ class Layer3DTiles extends BaseEvent{
     if(this.rightClickMapFn){
       map.off('rightclick', this.rightClickMapFn)
       this.rightClickMapFn = null
+    }
+    if(this.tilesRenderer){
+      this.tilesRenderer.onLoadTileSet = null;
+      this.tilesRenderer.onLoadModel = null;
+      this.tilesRenderer.onDisposeModel = null;
     }
   }
   clickMap(e){
@@ -278,9 +285,8 @@ class Layer3DTiles extends BaseEvent{
     this.unbindEvents()
     this.layer.remove(this.group)
     this.tilesRenderer?.dispose()
-    this.clearGroup(this.group)
     this.group = null
-    this.tilesRenderer = undefined
+    // this.tilesRenderer = undefined
     this.layer = null
     if(this.statsContainer){
       this.statsContainer.remove()
@@ -293,33 +299,6 @@ class Layer3DTiles extends BaseEvent{
     }*/
   }
 
-  clearGroup(group) {
-    const clearCache = (mesh) => {
-      if (mesh.geometry) {
-        mesh.geometry.dispose(); // 删除几何体
-      }
-      if (mesh.material && mesh.material.dispose) {
-        mesh.material.dispose(); // 删除材质
-      }
-      if (mesh.material.texture && mesh.material.texture.dispose) {
-        mesh.material.texture.dispose();
-      }
-    };
-    const removeObj = (item) => {
-      let array = item.children.filter((x) => x);
-      array.forEach(v => {
-        if (v.children.length) {
-          removeObj(v);
-        } else {
-          if (v.isMesh) {
-            clearCache(v);
-          }
-        }
-      });
-      array = null;
-    };
-    removeObj(group);
-  }
 }
 
 export {Layer3DTiles}

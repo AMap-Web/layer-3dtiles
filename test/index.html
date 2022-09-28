@@ -29,6 +29,7 @@
       <button onclick="show()">显示</button>
       <button onclick="hide()">隐藏</button>
       <button onclick="destroy()">销毁tiles</button>
+      <button onclick="create()">创建tiles</button>
     </div>
     <script type="text/javascript">
       // const center = [116.1525,39.906]
@@ -46,33 +47,8 @@
       layer.on('complete', () => {
         const light = new THREE.AmbientLight('#ffffff', 1);
         layer.add(light);
-        tiles = new AMap.Layer3DTiles(layer, {
-          // url: './hutong/tileset.json', // shp生成的3dtiles
-          // url: './tiles/tileset.json', // 倾斜摄影生成的3dtiles
-          url: 'http://localhost/bl-1/tileset.json', // 倾斜摄影生成的3dtiles
-          position: center,
-          mouseEvent: true,
-          debug: true
-        })
-        tiles.setRotation({
-          x:0,
-          y:0,
-          z:0
-        })
-        tiles.setScale(1.5)
-        tiles.on('click', (e) => {
-          console.log('click: ', e)
-        })
-        tiles.on('mousemove', (e) => {
-          console.log('mouse move: ', e)
-        })
-        tiles.on('rightClick', (e) => {
-          console.log('right click: ', e)
-        })
-        // tiles.setTranslate({x:15,y:15,z:0})
-        console.log('layer: ', layer)
-        console.log('tiles: ', tiles)
       })
+      console.log('layer: ', layer)
       function show(){
         tiles.show()
       }
@@ -81,6 +57,33 @@
       }
       function destroy(){
         tiles.destroy()
+      }
+      function create(){
+        tiles = new AMap.Layer3DTiles(layer, {
+          // url: './hutong/tileset.json', // shp生成的3dtiles
+          // url: './tiles/tileset.json', // 倾斜摄影生成的3dtiles
+          url: 'http://localhost/bl-1/tileset.json', // 倾斜摄影生成的3dtiles
+          position: center,
+          // mouseEvent: true,
+          debug: true
+        })
+        tiles.setRotation({
+          x:0,
+          y:0,
+          z:0
+        })
+        tiles.setScale(1.5)
+        /*tiles.on('click', (e) => {
+          console.log('click: ', e)
+        })
+        tiles.on('mousemove', (e) => {
+          console.log('mouse move: ', e)
+        })
+        tiles.on('rightClick', (e) => {
+          console.log('right click: ', e)
+        })*/
+        // tiles.setTranslate({x:15,y:15,z:0})
+        console.log('tiles: ', tiles)
       }
 
     </script>
